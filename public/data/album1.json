@@ -1,0 +1,124 @@
+{
+    "albumName": "Tunnel",
+    "artistName": "Corner-Records",
+    "releaseDate": "2023-06-22",
+    "genre": "acoustic",
+    "albumArtUrl": "",
+    "artistLinks": [
+      { "platform": "youtube", "link": "https://www.youtube.com/@dlwlrma" },
+      { "platform": "instagram", "link": "https://www.instagram.com/dlwlrma/" }
+    ],
+    "artistEmail": "boostksm@gmail.com",
+    "songCnt": 3,
+    "songs": [
+      {
+        "id": "1",
+        "idx": 0,
+        "name": "터널",
+        "imageUrl":
+          "/samples/track1.jpg",
+        "description": "1번 트랙",
+        "highlightTime": 108,
+        "audioSrc": "/samples/터널-코너레코즈.mp3",
+        "lyrics": ["가고 싶은 곳이 생긴 열일곱 소녀는", "들뜬 마음으로 떠날 채비를 하고", "부풀어 오른 가슴을 간신히 부여잡고", "낯선 곳을 향해 한 발을 내딛었어", "가도 가도 끝이 보이지 않아", "벌써 몇 번이나 주저앉으려 했지", "희미하게 보이는 저기 저곳에", "여전히 지금도 가고 있는 걸", "앞으로 나아가 지쳐 힘들어도 다시 일어나", "끝이 없는 터널 속에 버려진 나", "보이지 않는 닿을 수 없는 꿈 속의 그 곳", "쉬지 않는 발걸음에 지쳐가며", "걸어보자 걸어보자 걸어보자", "앞으로 나아가 지쳐 힘들어도 다시 일어나", "끝이 없는 터널 속에 버려진 나", "꺼지지 않는 불씨 속에 바람이 일어", "보이지 않는 버릴 수 없는 가고 싶은 그 곳", "오늘도 난 캄캄한 밤 외로운 길을", "걸어간다 걸어간다 걸어간다"],
+        "credits": { "작사": "코너레코즈", "작곡": "코너레코즈", "편곡": "코너레코즈, 최힘찬" },
+        "links": [
+          {
+            "platform": "download",
+            "link": "/samples/터널-코너레코즈.mp3"
+          },
+          { "platform": "youtube", "link": "https://youtu.be/xhsOBCmUApo" },
+          {
+            "platform": "vibe",
+            "link": "https://vibe.naver.com/track/55021908"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "idx": 1,
+        "name": "겨울",
+        "imageUrl":
+          "/samples/track2.jpg",
+        "description": "2번 트랙",
+        "highlightTime": 126,
+        "audioSrc": "/samples/겨울-earbuT.mp3",
+        "lyrics": ["가사 업로드 예정"],
+        "credits": { "작사": "earbuT", "작곡": "earbuT", "편곡": "earbuT" },
+        "links": [
+          { "platform": "download", "link": "/samples/겨울-earbuT.mp3" },
+          {
+            "platform": "soundcloud",
+            "link": "https://soundcloud.com/earbut/jgjlmncpogor"
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "idx": 2,
+        "name": "Be As You Are",
+        "imageUrl":
+          "/samples/track3.jpg",
+        "description": "3번 트랙",
+        "highlightTime": 60,
+        "audioSrc": "/samples/Be As You Are (JordanXL Remix)-Mike Posner.mp3",
+        "lyrics":   [
+          "Virginia Woolf and poetry",
+          "No one seemed to notice me",
+          "Being young was getting so old",
+          "Cheap beer and cigarettes",
+          "Life was like a movie set",
+          "And I seemed to be given no role",
+          "But in times of trouble",
+          "I can turn to my mother",
+          "And I know that she gon' understand",
+          "So at age 18",
+          "I cried to my mother",
+          "And she told me, \"young man\"",
+          "\"There are moments when you fall to the ground",
+          "But you are stronger than you feel you are now",
+          "You don't always have to speak so loud, no",
+          "Just be as you are",
+          "Life is not always a comfortable ride",
+          "Everybody's got scars that they hide",
+          "And everybody plays the fool sometimes, yeah",
+          "Just be as you are\"",
+          "They played me on the radio",
+          "And everything was changing, so",
+          "I thought I was all the way grown",
+          "But I can still remember in that cold November",
+          "When I realized I'm all alone",
+          "But in times of trouble",
+          "I can turn to my mother",
+          "And I know that she gon' understand",
+          "So at age 22",
+          "I cried to my mother",
+          "And she told me, \"young man\"",
+          "\"There are moments when you fall to the ground",
+          "But you are stronger than you feel you are now",
+          "You don't always have to speak so loud, no",
+          "Just be as you are",
+          "It doesn't matter if you become some star",
+          "Life is better when you open your heart",
+          "You don't always have to act so hard, no",
+          "Just be as you are\"",
+          "\"There are moments when you fall to the ground",
+          "But you are stronger than you feel you are now",
+          "You don't always have to speak so loud, no",
+          "Just be as you are",
+          "It doesn't matter if you become some star",
+          "Life is better when you open your heart",
+          "You don't always have to act so hard, no",
+          "Just be as you are\""
+      ],
+        "credits": { "작사": "Mike Posner", "작곡": "Mike Posner", "편곡": "JordanXL" },
+        "links": [
+          { "platform": "youtube", "link": "https://youtu.be/mBPk1MaBC6U" },
+          {
+            "platform": "itunes",
+            "link": "https://music.apple.com/kr/album/be-as-you-are-jordanxl-remix/1440833628?i=1440833731"
+          }
+        ]
+      }
+    ]
+  }
