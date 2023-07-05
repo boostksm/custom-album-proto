@@ -42,11 +42,11 @@
           "/samples/track2.jpg",
         "description": "2번 트랙",
         "highlightTime": 126,
-        "audioSrc": "/samples/겨울-earbuT.mp3",
+        "audioSrc": "/samples/겨울-earbut.mp3",
         "lyrics": ["가사 업로드 예정"],
         "credits": { "작사": "earbuT", "작곡": "earbuT", "편곡": "earbuT" },
         "links": [
-          { "platform": "download", "link": "/samples/겨울-earbuT.mp3" },
+          { "platform": "download", "link": "/samples/겨울-earbut.mp3" },
           {
             "platform": "soundcloud",
             "link": "https://soundcloud.com/earbut/jgjlmncpogor"
