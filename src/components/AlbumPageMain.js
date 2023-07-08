@@ -12,22 +12,6 @@ const MainLayout = styled.main`
   flex-grow: 1;
   min-height: 0;
 
-  .optionsSection {
-    height: 5%;
-    text-align: end;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    .optionInputBox {
-      padding: 0 10px;
-      display: flex;
-      align-items: center;
-      .optionInput {
-        accent-color: gray;
-      }
-    }
-  }
-
   .albumContentSection {
     height: 95%;
     position: relative;
