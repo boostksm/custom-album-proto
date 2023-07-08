@@ -7,7 +7,6 @@ const IconAnchorLayout = styled.a`
   }
   svg {
     height: 100%;
-    /* width: auto; */
     width: 100%;
   }
 `;

@@ -4,7 +4,6 @@ import { useState } from "react";
 const TabMenuLayout = styled.div`
   height: 100%;
   width: 70%;
-  /* aspect-ratio: 1/1; */
   border-top: 1px solid black;
   display: flex;
   flex-direction: column;
