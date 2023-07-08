@@ -8,7 +8,6 @@ const CopyButtonLayout = styled.button`
   }
   svg {
     height: 100%;
-    /* width: auto; */
     width: 100%;
   }
 `;
