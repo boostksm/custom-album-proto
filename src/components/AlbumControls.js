@@ -82,10 +82,18 @@ const AlbumControls = ({
 
   return (
     <AlbumControlsLayout $isCdMenuShow={isCdMenuShow}>
-      <Button onClick={showCdMenu} $isHide={isCdMenuShow}>
+      <Button
+        onClick={showCdMenu}
+        $isHide={isCdMenuShow}
+        aria-label="show cd menu"
+      >
         <RiArrowUpDoubleLine className="icon" />
       </Button>
-      <Button onClick={hideCdMenu} $isHide={!isCdMenuShow}>
+      <Button
+        onClick={hideCdMenu}
+        $isHide={!isCdMenuShow}
+        aria-label="hide cd menu"
+      >
         <RiArrowDownDoubleLine className="icon" />
       </Button>
       {isCdMenuShow && (
