@@ -122,16 +122,21 @@ const SongPlayer = ({
         <h2>{playingSong?.name}</h2>
       </div>
       <div className="buttonsBox">
-        <Button onClick={toggleIsRandom} $isToggled={isRandom}>
+        <Button
+          onClick={toggleIsRandom}
+          $isToggled={isRandom}
+          aria-label="toggle random"
+        >
           <PlayerIcons.Random />
         </Button>
         <Button
           onClick={playPrevSong}
           disabled={isRandom || (loopOptionIdx !== 1 && playingSong?.idx === 0)}
+          aria-label="play previous song"
         >
           <PlayerIcons.Prev />
         </Button>
-        <Button onClick={toggleIsPlaying}>
+        <Button onClick={toggleIsPlaying} aria-label="play or pause">
           {isPlaying ? <PlayerIcons.Pause /> : <PlayerIcons.Play />}
         </Button>
         <Button
@@ -141,6 +146,7 @@ const SongPlayer = ({
             loopOptionIdx !== 1 &&
             playingSong?.idx === albumData.songCnt - 1
           }
+          aria-label="play next song"
         >
           <PlayerIcons.Next />
         </Button>
@@ -160,6 +166,7 @@ const SongPlayer = ({
           type="range"
           value={(currentTime / duration) * 100 || 0}
           onInput={changeCurrentTime}
+          aria-label="progress bar"
         />
         {/* 리액트는 onchange를 oninput 핸들러에 부착한다.. */}
         <div className="playingSongTimeBox">
