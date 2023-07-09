@@ -51,20 +51,17 @@ const CdMenu = ({ albumData, isScrolling, selectSong }) => {
       $isCdMenuShow={isCdMenuShow}
     >
       <RotatingCd isFaster={isScrolling} albumArtUrl={albumData.albumArtUrl} />
-      {isAlbumControlsShow && !isScrolling && (
-        <AlbumControls
-          selectSong={selectSong}
-          songs={albumData.songs}
-          setIsCdMenuShow={setIsCdMenuShow}
-          isCdMenuShow={isCdMenuShow}
-        />
-      )}
+      <AlbumControls
+        isVisible={isAlbumControlsShow && !isScrolling}
+        selectSong={selectSong}
+        songs={albumData.songs}
+        setIsCdMenuShow={setIsCdMenuShow}
+        isCdMenuShow={isCdMenuShow}
+      />
       <button
         className="showMenuButton"
         aria-label="show cd menu"
         onClick={() => setIsCdMenuShow(true)}
-        onMouseOver={(e) => e.stopPropagation()}
-        onMouseOut={(e) => e.stopPropagation()}
       ></button>
     </CdMenuLayout>
   );
