@@ -21,7 +21,7 @@ const AlbumPageHeaderLayout = styled.header`
 
 const AlbumPageHeader = ({ albumData }) => {
   return (
-    <AlbumPageHeaderLayout>
+    <AlbumPageHeaderLayout aria-label="앨범 헤더">
       <div className="albumInfoBox">
         <h1 aria-label="앨범명" className="albumNameHeading">
           {albumData.albumName}

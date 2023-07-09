@@ -49,6 +49,9 @@ const CdMenu = ({ albumData, isScrolling, selectSong }) => {
       onMouseOver={showAlbumControls}
       onMouseOut={hideAlbumControls}
       $isCdMenuShow={isCdMenuShow}
+      aria-label="수록곡 네비게이션 메뉴"
+      role="region"
+      id="cdMenu"
     >
       <RotatingCd isFaster={isScrolling} albumArtUrl={albumData.albumArtUrl} />
       <AlbumControls
@@ -60,8 +63,10 @@ const CdMenu = ({ albumData, isScrolling, selectSong }) => {
       />
       <button
         className="showMenuButton"
-        aria-label="show cd menu"
+        aria-label="수록곡 네비게이션 메뉴 펼치기 "
         onClick={() => setIsCdMenuShow(true)}
+        aria-expanded="false"
+        aria-controls="cdMenu"
       ></button>
     </CdMenuLayout>
   );

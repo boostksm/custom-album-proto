@@ -121,7 +121,7 @@ const Song = ({ song, isBlur, isReversed, selectSong }) => {
         <div className="songInfoItem songDetailBox">
           <TabMenu menu={tabMenu} isReversed={isReversed} />
         </div>
-        <ul className="songInfoItem songLinkList">
+        <ul className="songInfoItem songLinkList" aria-label="관련 링크">
           {song.links.map(({ platform, link }) => (
             <li className="songLinkItem" key={platform}>
               <IconAnchor

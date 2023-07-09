@@ -87,19 +87,23 @@ const AlbumControls = ({
       <Button
         onClick={showCdMenu}
         $isHide={isCdMenuShow}
-        aria-label="show cd menu"
+        aria-label="수록곡 네비게이션 메뉴 펼치기"
+        aria-expanded="false"
+        aria-controls="cdMenu"
       >
         <RiArrowUpDoubleLine className="icon" />
       </Button>
       <Button
         onClick={hideCdMenu}
         $isHide={!isCdMenuShow}
-        aria-label="hide cd menu"
+        aria-label="수록곡 네비게이션 메뉴 숨기기"
+        aria-expanded="true"
+        aria-controls="cdMenu"
       >
         <RiArrowDownDoubleLine className="icon" />
       </Button>
       {isCdMenuShow && (
-        <nav className="songsNav">
+        <nav className="songsNav" aria-label="수록곡">
           <ol className="songAnchorList">
             {songs.map((song) => (
               <li

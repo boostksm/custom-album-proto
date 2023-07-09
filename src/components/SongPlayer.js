@@ -3,9 +3,13 @@ import { PlayerIcons } from "../utils/icons";
 import { css, styled } from "styled-components";
 import useSongPlayer from "../hooks/useSongPlayer";
 
-const loopOptions = ["NONE", "ALL", "ONE"];
+const loopDescriptions = [
+  "반복 재생 꺼짐",
+  "모든 곡 반복 재생 중",
+  "한 곡 반복 재생 중",
+];
 
-const SongPlayerLayout = styled.div`
+const SongPlayerLayout = styled.section`
   max-width: 500px;
   width: 40%;
   height: 120px;
@@ -102,7 +106,7 @@ const SongPlayer = ({
   } = useSongPlayer({ albumData, setPlayingId, playingSong, isFromHighlight });
 
   return (
-    <SongPlayerLayout role="region">
+    <SongPlayerLayout aria-label="곡 플레이어">
       <audio
         onEnded={playNextSong}
         ref={audioRef}
@@ -120,18 +124,19 @@ const SongPlayer = ({
         <Button
           onClick={toggleIsRandom}
           $isToggled={isRandom}
-          aria-label="toggle random"
+          aria-label="랜덤 재생"
+          aria-pressed={isRandom}
         >
           <PlayerIcons.Random />
         </Button>
         <Button
           onClick={playPrevSong}
           disabled={isRandom || (loopOptionIdx !== 1 && playingSong?.idx === 0)}
-          aria-label="play previous song"
+          aria-label="이전 곡 재생"
         >
           <PlayerIcons.Prev />
         </Button>
-        <Button onClick={toggleIsPlaying} aria-label="play or pause">
+        <Button onClick={toggleIsPlaying} aria-label="재생/일시정지">
           {isPlaying ? <PlayerIcons.Pause /> : <PlayerIcons.Play />}
         </Button>
         <Button
@@ -141,7 +146,7 @@ const SongPlayer = ({
             loopOptionIdx !== 1 &&
             playingSong?.idx === albumData.songCnt - 1
           }
-          aria-label="play next song"
+          aria-label="다음곡 재생"
         >
           <PlayerIcons.Next />
         </Button>
@@ -149,7 +154,8 @@ const SongPlayer = ({
         <Button
           onClick={setLoop}
           $isToggled={loopOptionIdx !== 0}
-          aria-label={`loop ${loopOptions[loopOptionIdx]}`}
+          aria-label="반복 재생"
+          aria-description={loopDescriptions[loopOptionIdx]}
         >
           <PlayerIcons.Loop />
           {loopOptionIdx === 2 && <span>1</span>}
@@ -161,7 +167,7 @@ const SongPlayer = ({
           type="range"
           value={(currentTime / duration) * 100 || 0}
           onInput={changeCurrentTime}
-          aria-label="progress bar"
+          aria-label="재생바"
         />
         <div className="playingSongTimeBox">
           <div>{timeFormatter.getString(currentTime)}</div>

@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "styled-components";
 import SongPlayer from "./SongPlayer";
 
-const PlayBarLayout = styled.section`
+const PlayBarLayout = styled.div`
   flex-shrink: 0;
 
   width: 100%;
