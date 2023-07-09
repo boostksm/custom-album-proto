@@ -13,25 +13,20 @@ const SongPlayerLayout = styled.div`
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   align-items: center;
-  /* display: flex; */
-  /* flex-direction: column; */
 
   @media (max-width: 768px) {
     width: 75%;
   }
 
   .playingSongHeadingBox {
-    /* flex: 1; */
     font-size: 1.8rem;
     text-align: center;
   }
   .buttonsBox {
-    /* flex: 1; */
     display: flex;
     justify-content: space-between;
   }
   .progressBarBox {
-    /* flex: 1; */
     .progressBarInput {
       -webkit-appearance: none;
       appearance: none;
@@ -122,16 +117,21 @@ const SongPlayer = ({
         <h2>{playingSong?.name}</h2>
       </div>
       <div className="buttonsBox">
-        <Button onClick={toggleIsRandom} $isToggled={isRandom}>
+        <Button
+          onClick={toggleIsRandom}
+          $isToggled={isRandom}
+          aria-label="toggle random"
+        >
           <PlayerIcons.Random />
         </Button>
         <Button
           onClick={playPrevSong}
           disabled={isRandom || (loopOptionIdx !== 1 && playingSong?.idx === 0)}
+          aria-label="play previous song"
         >
           <PlayerIcons.Prev />
         </Button>
-        <Button onClick={toggleIsPlaying}>
+        <Button onClick={toggleIsPlaying} aria-label="play or pause">
           {isPlaying ? <PlayerIcons.Pause /> : <PlayerIcons.Play />}
         </Button>
         <Button
@@ -141,6 +141,7 @@ const SongPlayer = ({
             loopOptionIdx !== 1 &&
             playingSong?.idx === albumData.songCnt - 1
           }
+          aria-label="play next song"
         >
           <PlayerIcons.Next />
         </Button>
@@ -160,8 +161,8 @@ const SongPlayer = ({
           type="range"
           value={(currentTime / duration) * 100 || 0}
           onInput={changeCurrentTime}
+          aria-label="progress bar"
         />
-        {/* 리액트는 onchange를 oninput 핸들러에 부착한다.. */}
         <div className="playingSongTimeBox">
           <div>{timeFormatter.getString(currentTime)}</div>
           <div>{timeFormatter.getString(duration)}</div>

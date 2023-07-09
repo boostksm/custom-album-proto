@@ -1,4 +1,21 @@
 import { useCallback } from "react";
+import { styled } from "styled-components";
+
+const OptionsSectionLayout = styled.section`
+  height: 5%;
+  text-align: end;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  .optionInputBox {
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    .optionInput {
+      accent-color: gray;
+    }
+  }
+`;
 
 const OptionsSection = ({
   isFromHighlight,
@@ -30,7 +47,7 @@ const OptionsSection = ({
   );
 
   return (
-    <section className="optionsSection">
+    <OptionsSectionLayout>
       <div className="optionInputBox">
         <input
           className="optionInput"
@@ -67,7 +84,7 @@ const OptionsSection = ({
           자동스크롤
         </label>
       </div>
-    </section>
+    </OptionsSectionLayout>
   );
 };
 

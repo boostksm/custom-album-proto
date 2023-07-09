@@ -79,14 +79,6 @@ const SongLayout = styled.div`
       .songNameButton {
         height: 100%;
         font-size: 2.5rem;
-        /* width: 100%; */
-        /* height: 100%; */
-        /* overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        word-break: break-all; */
       }
     }
     .songDetailBox {
