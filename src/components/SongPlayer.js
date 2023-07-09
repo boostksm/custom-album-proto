@@ -5,7 +5,7 @@ import useSongPlayer from "../hooks/useSongPlayer";
 
 const loopOptions = ["NONE", "ALL", "ONE"];
 
-const SongPlayerLayout = styled.div`
+const SongPlayerLayout = styled.section`
   max-width: 500px;
   width: 40%;
   height: 120px;
@@ -102,7 +102,7 @@ const SongPlayer = ({
   } = useSongPlayer({ albumData, setPlayingId, playingSong, isFromHighlight });
 
   return (
-    <SongPlayerLayout role="region">
+    <SongPlayerLayout aria-label="곡 플레이어">
       <audio
         onEnded={playNextSong}
         ref={audioRef}

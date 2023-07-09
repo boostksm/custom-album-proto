@@ -74,7 +74,7 @@ const AlbumPageMain = ({
         isDisabled={isDisabled}
         setIsDisabled={setIsDisabled}
       />
-      <section className="albumContentSection">
+      <section className="albumContentSection" aria-label="앨범 콘텐츠">
         <AutoScrollBox>
           <ol className="songList">
             {albumData.songs.map((song, idx) => (
