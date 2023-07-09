@@ -8,11 +8,11 @@
 
 ### [데스크탑 페이지]
 
-![앨범페이지-데스크탑](https://github.com/boostksm/custom-album-proto/assets/109154976/c5fb0a82-8959-4165-8fdb-485c4716d549)
+![앨범페이지-데스크탑](https://github.com/boostksm/custom-album-proto/assets/109154976/236104dd-449d-4df0-bd3f-efee31bb8076)
 
 ### [모바일 페이지]
 
-![앨범페이지-모바일](https://github.com/boostksm/custom-album-proto/assets/109154976/f0ef191a-d460-47fc-b267-18bd4ff4f0a5)
+![앨범페이지-모바일](https://github.com/boostksm/custom-album-proto/assets/109154976/12c54a82-8383-4c15-a8a8-dbfc22a564e7)
 
 ## (예정) 커스텀 앨범 공유 서비스
 
