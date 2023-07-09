@@ -29,13 +29,13 @@ const AlbumContentFooterLayout = styled.footer`
 
 const AlbumContentFooter = ({ albumData }) => {
   return (
-    <AlbumContentFooterLayout>
-      <p aria-label="album copyright">@{albumData.artistName}</p>
-      <p aria-label="album release date">release : {albumData.releaseDate}</p>
-      <p aria-label="album genre">genre : {albumData.genre}</p>
-      <div aria-label="artist contacts" className="artistContactsBox">
+    <AlbumContentFooterLayout aria-label="앨범 상세 정보">
+      <p aria-label="앨범 카피라이트">@{albumData.artistName}</p>
+      <p aria-label="앨범 발매일">release : {albumData.releaseDate}</p>
+      <p aria-label="앨범 장르">genre : {albumData.genre}</p>
+      <div className="artistContactsBox">
         <div className="label">artist contacts : </div>
-        <ul className="contactList">
+        <ul className="contactList" aria-label="아티스트 컨택">
           {albumData.artistLinks.map(({ platform, link }) => (
             <li className="contactItem" key={platform}>
               <IconAnchor

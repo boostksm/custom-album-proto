@@ -23,7 +23,7 @@ const CopyButton = ({ value, name, children }) => {
   };
   return (
     <CopyButtonLayout
-      aria-label={`copy ${name}`}
+      aria-label={`${name} 복사하기`}
       onClick={copyValueToClipboard}
     >
       {children}
