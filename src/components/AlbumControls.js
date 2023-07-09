@@ -88,6 +88,8 @@ const AlbumControls = ({
         onClick={showCdMenu}
         $isHide={isCdMenuShow}
         aria-label="show cd menu"
+        aria-expanded="false"
+        aria-controls="cdMenu"
       >
         <RiArrowUpDoubleLine className="icon" />
       </Button>
@@ -95,6 +97,8 @@ const AlbumControls = ({
         onClick={hideCdMenu}
         $isHide={!isCdMenuShow}
         aria-label="hide cd menu"
+        aria-expanded="true"
+        aria-controls="cdMenu"
       >
         <RiArrowDownDoubleLine className="icon" />
       </Button>
