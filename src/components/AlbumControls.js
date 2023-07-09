@@ -11,6 +11,7 @@ const AlbumControlsLayout = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  visibility: ${(props) => (props.$isVisible ? "visible" : "hidden")};
 
   @media (max-width: 768px) {
     ${(props) =>
@@ -68,6 +69,7 @@ const Button = styled.button`
 `;
 
 const AlbumControls = ({
+  isVisible,
   songs,
   selectSong,
   isCdMenuShow,
@@ -81,7 +83,7 @@ const AlbumControls = ({
   }, [setIsCdMenuShow]);
 
   return (
-    <AlbumControlsLayout $isCdMenuShow={isCdMenuShow}>
+    <AlbumControlsLayout $isCdMenuShow={isCdMenuShow} $isVisible={isVisible}>
       <Button
         onClick={showCdMenu}
         $isHide={isCdMenuShow}
