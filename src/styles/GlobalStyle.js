@@ -4,9 +4,18 @@ import reset from "./reset";
 const GlobalStyle = createGlobalStyle`
     ${reset}
 
-    /* min-height */
+    /* height */
     body {
         min-height: 500px;
+        width: 100dvw;
+        height: 100dvh;
+        @supports not (width: 100dvw) {
+            width: 100vw;
+            height: 100vh;
+        }
+        #root{
+            height: 100%;
+        }
     }
 
     /* font-size */

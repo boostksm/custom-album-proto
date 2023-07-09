@@ -8,8 +8,8 @@ import getAlbumData from "../axios/requests/getAlbumData";
 
 const AlbumPageContainer = styled.div`
   position: relative;
-  width: 100dvw;
-  height: 100dvh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 `;

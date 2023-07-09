@@ -2,11 +2,7 @@ import AppRoute from "./routes/AppRoute";
 import "./styles/fonts.css";
 
 const App = () => {
-  return (
-    <div className="App">
-      <AppRoute />
-    </div>
-  );
+  return <AppRoute />;
 };
 
 export default App;
