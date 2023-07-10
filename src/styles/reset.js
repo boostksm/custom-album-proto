@@ -145,6 +145,7 @@ const reset = css`
     padding: 0;
     cursor: pointer;
     &:disabled {
+      opacity: 30%;
       cursor: auto;
     }
   }
