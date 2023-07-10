@@ -37,20 +37,16 @@
       {
         "id": "2",
         "idx": 1,
-        "name": "겨울",
+        "name": "봄",
         "imageUrl":
           "/samples/track2.jpg",
         "description": "2번 트랙",
-        "highlightTime": 126,
-        "audioSrc": "/samples/겨울-earbut.mp3",
+        "highlightTime": 135,
+        "audioSrc": "/samples/봄-earbut.mp3",
         "lyrics": ["가사 업로드 예정"],
         "credits": { "작사": "earbuT", "작곡": "earbuT", "편곡": "earbuT" },
         "links": [
-          { "platform": "download", "link": "/samples/겨울-earbut.mp3" },
-          {
-            "platform": "soundcloud",
-            "link": "https://soundcloud.com/earbut/jgjlmncpogor"
-          }
+          { "platform": "download", "link": "/samples/봄-earbut.mp3" }
         ]
       },
       {
