@@ -16,12 +16,8 @@ const CdMenuLayout = styled.div`
 
   @media (max-width: 768px) {
     width: ${(props) => (props.$isCdMenuShow ? "60%" : "10%")};
-    top: ${(props) => (props.$isCdMenuShow ? "50%" : "100%")};
-    left: ${(props) => (props.$isCdMenuShow ? "50%" : "100%")};
-    transform: ${(props) =>
-      props.$isCdMenuShow
-        ? "translateX(-50%) translateY(-50%)"
-        : "translateX(-100%)"};
+    top: ${(props) => (props.$isCdMenuShow ? "50%" : "105%")};
+    left: ${(props) => (props.$isCdMenuShow ? "50%" : "93%")};
   }
 
   .showMenuButton {
