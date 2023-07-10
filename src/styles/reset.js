@@ -139,6 +139,7 @@ const reset = css`
     color: inherit;
   }
   button {
+    color: black;
     border: none;
     background: none;
     padding: 0;
