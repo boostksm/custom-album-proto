@@ -42,7 +42,10 @@ const AlbumControlsLayout = styled.div`
           padding: 5px 5px;
           &:hover {
             opacity: 1;
-            font-weight: bold;
+            text-shadow: 0.5px 0px 0px;
+          }
+          @media (max-height: 700px) {
+            font-size: 1.3rem;
           }
         }
       }

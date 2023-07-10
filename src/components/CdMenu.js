@@ -10,6 +10,9 @@ const CdMenuLayout = styled.div`
   max-width: 500px;
   height: unset;
   ${AspectRatioPollyfill(1 / 1)}
+  @media (max-height: 700px) {
+    max-width: 300px;
+  }
 
   top: ${(props) => (props.$isCdMenuShow ? "50%" : "105%")};
   transition: all 0.75s ease-in-out;
