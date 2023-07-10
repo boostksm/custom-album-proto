@@ -2,10 +2,9 @@ import { styled } from "styled-components";
 import TabMenu from "./common/TabMenu";
 import SongCredits from "./SongCredits";
 import SongLyrics from "./SongLyrics";
-import IconAnchor from "./common/IconAnchor";
+import LinkAnchor from "./common/LinkAnchor";
 import { LinkIcons } from "../utils/icons";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
-import { AspectRatioPollyfill } from "../styles/mixins";
 
 const SongLayout = styled.div`
   width: 100%;
@@ -135,13 +134,13 @@ const Song = ({ song, isBlur, isReversed, selectSong }) => {
               LinkIcons[capitalizeFirstLetter(platform)] || LinkIcons.Unknown;
             return (
               <li className="songLinkItem" key={platform}>
-                <IconAnchor
+                <LinkAnchor
                   name={platform}
                   href={link}
                   isDownload={platform === "download"}
                 >
                   <LinkIcon size="100%" />
-                </IconAnchor>
+                </LinkAnchor>
               </li>
             );
           })}

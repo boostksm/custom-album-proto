@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-const IconAnchorLayout = styled.a`
+const LinkAnchorLayout = styled.a`
   display: inline-block;
   height: 100%;
   color: gray;
@@ -9,9 +9,9 @@ const IconAnchorLayout = styled.a`
   }
 `;
 
-const IconAnchor = ({ children, href, name, isDownload = false }) => {
+const LinkAnchor = ({ children, href, name, isDownload = false }) => {
   return (
-    <IconAnchorLayout
+    <LinkAnchorLayout
       aria-label={name}
       href={href}
       target="_blank"
@@ -19,8 +19,8 @@ const IconAnchor = ({ children, href, name, isDownload = false }) => {
       download={isDownload}
     >
       {children}
-    </IconAnchorLayout>
+    </LinkAnchorLayout>
   );
 };
 
-export default IconAnchor;
+export default LinkAnchor;

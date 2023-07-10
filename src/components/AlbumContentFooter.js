@@ -1,4 +1,4 @@
-import IconAnchor from "./common/IconAnchor";
+import LinkAnchor from "./common/LinkAnchor";
 import CopyButton from "./common/CopyButton";
 import { styled } from "styled-components";
 import { LinkIcons } from "../utils/icons";
@@ -41,9 +41,9 @@ const AlbumContentFooter = ({ albumData }) => {
               LinkIcons[capitalizeFirstLetter(platform)] || LinkIcons.Unknown;
             return (
               <li className="contactItem" key={platform}>
-                <IconAnchor name={platform} href={link}>
+                <LinkAnchor name={platform} href={link}>
                   <LinkIcon size="20px" />
-                </IconAnchor>
+                </LinkAnchor>
               </li>
             );
           })}
