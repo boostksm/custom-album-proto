@@ -54,11 +54,8 @@ const AlbumControlsLayout = styled.div`
 `;
 
 const Button = styled.button`
-  svg {
-    height: 100%;
-    width: auto;
-  }
   height: 15%;
+  width: 15%;
   color: white;
   opacity: 0.6;
   &:hover {
@@ -80,10 +77,10 @@ const AlbumControls = ({
 }) => {
   const showCdMenu = useCallback(() => {
     setIsCdMenuShow(true);
-  }, [setIsCdMenuShow]);
+  }, []);
   const hideCdMenu = useCallback(() => {
     setIsCdMenuShow(false);
-  }, [setIsCdMenuShow]);
+  }, []);
 
   return (
     <AlbumControlsLayout $isCdMenuShow={isCdMenuShow} $isVisible={isVisible}>
@@ -94,7 +91,7 @@ const AlbumControls = ({
         aria-expanded="false"
         aria-controls="cdMenu"
       >
-        <RiArrowUpDoubleLine className="icon" />
+        <RiArrowUpDoubleLine size="100%" />
       </Button>
       <Button
         onClick={hideCdMenu}
@@ -103,7 +100,7 @@ const AlbumControls = ({
         aria-expanded="true"
         aria-controls="cdMenu"
       >
-        <RiArrowDownDoubleLine className="icon" />
+        <RiArrowDownDoubleLine size="100%" />
       </Button>
       {isCdMenuShow && (
         <nav className="songsNav" aria-label="수록곡">

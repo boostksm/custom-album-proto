@@ -5,6 +5,7 @@ import SongLyrics from "./SongLyrics";
 import IconAnchor from "./common/IconAnchor";
 import { LinkIcons } from "../utils/icons";
 import capitalizeFirstLetter from "../utils/capitalizeFirstLetter";
+import { AspectRatioPollyfill } from "../styles/mixins";
 
 const SongLayout = styled.div`
   width: 100%;
@@ -87,6 +88,13 @@ const SongLayout = styled.div`
     .songLinkList {
       height: 10%;
       .songLinkItem {
+        height: 100%;
+        width: unset;
+        aspect-ratio: 1/1;
+        @supports not (aspect-ratio: 1/1) {
+          height: 30px;
+          width: 30px;
+        }
         margin: 0 10px;
       }
     }
@@ -122,18 +130,21 @@ const Song = ({ song, isBlur, isReversed, selectSong }) => {
           <TabMenu menu={tabMenu} isReversed={isReversed} />
         </div>
         <ul className="songInfoItem songLinkList" aria-label="관련 링크">
-          {song.links.map(({ platform, link }) => (
-            <li className="songLinkItem" key={platform}>
-              <IconAnchor
-                name={platform}
-                href={link}
-                Icon={
-                  LinkIcons[capitalizeFirstLetter(platform)] ||
-                  LinkIcons.Unknown
-                }
-              />
-            </li>
-          ))}
+          {song.links.map(({ platform, link }) => {
+            const LinkIcon =
+              LinkIcons[capitalizeFirstLetter(platform)] || LinkIcons.Unknown;
+            return (
+              <li className="songLinkItem" key={platform}>
+                <IconAnchor
+                  name={platform}
+                  href={link}
+                  isDownload={platform === "download"}
+                >
+                  <LinkIcon size="100%" />
+                </IconAnchor>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </SongLayout>

@@ -1,26 +1,24 @@
 import { styled } from "styled-components";
 
 const IconAnchorLayout = styled.a`
+  display: inline-block;
+  height: 100%;
   color: gray;
   &:hover {
     color: darkgray;
   }
-  svg {
-    height: 100%;
-    width: 100%;
-  }
 `;
 
-const IconAnchor = ({ href, Icon, name }) => {
+const IconAnchor = ({ children, href, name, isDownload = false }) => {
   return (
     <IconAnchorLayout
       aria-label={name}
       href={href}
       target="_blank"
       rel="noreferrer"
-      download={name === "download"}
+      download={isDownload}
     >
-      <Icon />
+      {children}
     </IconAnchorLayout>
   );
 };
