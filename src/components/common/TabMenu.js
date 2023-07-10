@@ -48,7 +48,7 @@ const TabMenu = ({ menu, isReversed = false }) => {
   const [tabIdx, setTabIdx] = useState(-1);
   return (
     <TabMenuLayout $isReversed={isReversed}>
-      <ol className="tabHeadList">
+      <ol className="tabHeadList" aria-label="탭 메뉴 버튼">
         {menu.map(({ name }, idx) => (
           <li key={name} className="tabHeadItem">
             <Button

@@ -47,7 +47,7 @@ const OptionsSection = ({
   );
 
   return (
-    <OptionsSectionLayout>
+    <OptionsSectionLayout aria-label="탐색 옵션">
       <div className="optionInputBox">
         <input
           className="optionInput"
