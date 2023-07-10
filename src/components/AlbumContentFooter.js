@@ -1,4 +1,4 @@
-import IconAnchor from "./common/IconAnchor";
+import LinkAnchor from "./common/LinkAnchor";
 import CopyButton from "./common/CopyButton";
 import { styled } from "styled-components";
 import { LinkIcons } from "../utils/icons";
@@ -36,22 +36,21 @@ const AlbumContentFooter = ({ albumData }) => {
       <div className="artistContactsBox">
         <div className="label">artist contacts : </div>
         <ul className="contactList" aria-label="아티스트 컨택">
-          {albumData.artistLinks.map(({ platform, link }) => (
-            <li className="contactItem" key={platform}>
-              <IconAnchor
-                name={platform}
-                href={link}
-                Icon={
-                  LinkIcons[capitalizeFirstLetter(platform)] ||
-                  LinkIcons.Unknown
-                }
-              />
-            </li>
-          ))}
+          {albumData.artistLinks.map(({ platform, link }) => {
+            const LinkIcon =
+              LinkIcons[capitalizeFirstLetter(platform)] || LinkIcons.Unknown;
+            return (
+              <li className="contactItem" key={platform}>
+                <LinkAnchor name={platform} href={link}>
+                  <LinkIcon size="20px" />
+                </LinkAnchor>
+              </li>
+            );
+          })}
           {albumData.artistEmail && (
             <li className="contactItem">
               <CopyButton value={albumData.artistEmail} name="artist email">
-                <LinkIcons.Email />
+                <LinkIcons.Email size="20px" />
               </CopyButton>
             </li>
           )}

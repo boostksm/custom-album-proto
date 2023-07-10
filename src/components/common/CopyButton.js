@@ -6,10 +6,6 @@ const CopyButtonLayout = styled.button`
   &:hover {
     color: darkgray;
   }
-  svg {
-    height: 100%;
-    width: 100%;
-  }
 `;
 
 const CopyButton = ({ value, name, children }) => {

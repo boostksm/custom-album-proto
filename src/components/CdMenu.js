@@ -9,7 +9,13 @@ const CdMenuLayout = styled.div`
   width: 45%;
   max-width: 500px;
   height: unset;
-  ${AspectRatioPollyfill(1 / 1)}
+  aspect-ratio: 1/1;
+  @supports not (aspect-ratio: 1/1) {
+    ${AspectRatioPollyfill(1 / 1)}
+  }
+  @media (max-height: 700px) {
+    max-width: 300px;
+  }
 
   top: ${(props) => (props.$isCdMenuShow ? "50%" : "105%")};
   transition: all 0.75s ease-in-out;
