@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'IropkeBatangM';
     }
 
+    /* disable scroll-bounce on mobile */
+    html {
+        overscroll-behavior: none;
+    }
 
 `;
 
