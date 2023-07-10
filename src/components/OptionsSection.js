@@ -5,7 +5,7 @@ const OptionsSectionLayout = styled.section`
   height: 5%;
   text-align: end;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   .optionInputBox {
     padding: 0 10px;
