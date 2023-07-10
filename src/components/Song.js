@@ -69,7 +69,7 @@ const SongLayout = styled.div`
     .songInfoItem {
       width: 100%;
       display: flex;
-      justify-content: ${(props) => (props.$isReversed ? "end" : "start")};
+      justify-content: ${(props) => (props.$isReversed ? "flex-end" : "start")};
     }
 
     .songNameHeading {

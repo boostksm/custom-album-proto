@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { styled } from "styled-components";
-import { InnerCircle } from "../styles/mixins";
+import { AspectRatioPollyfill, InnerCircle } from "../styles/mixins";
 import RotatingCd from "./RotatingCd";
 import AlbumControls from "./AlbumControls";
 
@@ -9,7 +9,7 @@ const CdMenuLayout = styled.div`
   width: 45%;
   max-width: 500px;
   height: unset;
-  aspect-ratio: 1/1;
+  ${AspectRatioPollyfill(1 / 1)}
 
   top: ${(props) => (props.$isCdMenuShow ? "50%" : "105%")};
   transition: all 0.75s ease-in-out;

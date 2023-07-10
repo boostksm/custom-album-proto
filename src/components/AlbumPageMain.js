@@ -11,6 +11,7 @@ import AutoScrollItem from "./common/AutoScrollItem";
 const MainLayout = styled.main`
   flex-grow: 1;
   min-height: 0;
+  height: 0;
 
   .albumContentSection {
     height: 95%;

@@ -36,4 +36,17 @@ const InnerCircle = (ratio = 100) => css`
   height: ${ratio}%;
 `;
 
-export { ScrollBar, InnerCircle, AbsoluteMiddle };
+const AspectRatioPollyfill = (ratio) => css`
+  &::before {
+    float: left;
+    padding-top: ${(1 / ratio) * 100}%;
+    content: "";
+  }
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+`;
+
+export { ScrollBar, InnerCircle, AbsoluteMiddle, AspectRatioPollyfill };

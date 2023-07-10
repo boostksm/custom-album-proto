@@ -11,7 +11,7 @@ const TabMenuLayout = styled.div`
     height: 13%;
     display: flex;
     align-items: center;
-    justify-content: ${(props) => (props.$isReversed ? "end" : "start")};
+    justify-content: ${(props) => (props.$isReversed ? "flex-end" : "start")};
 
     .tabHeadItem {
       height: 100%;
