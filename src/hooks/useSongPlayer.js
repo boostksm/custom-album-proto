@@ -16,6 +16,7 @@ export default function useSongPlayer({
   const audioRef = useRef(null);
   const audioSrcManager = useRef(new AudioFetchingManager(10));
   const [curObjectUrl, setCurObjectUrl] = useState(null);
+  const isLoading = useMemo(() => curObjectUrl === null, [curObjectUrl]);
 
   useEffect(() => {
     if (!playingSong) return;
@@ -132,5 +133,6 @@ export default function useSongPlayer({
     toggleIsPlaying,
     toggleIsRandom,
     setLoop,
+    isLoading,
   };
 }
