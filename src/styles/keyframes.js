@@ -21,4 +21,13 @@ const shine = keyframes`
 	}
 `;
 
-export { rotate, rotateFaster, shine };
+const moveFromLeftToRight = keyframes`
+  0%{
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+`;
+
+export { rotate, rotateFaster, shine, moveFromLeftToRight };

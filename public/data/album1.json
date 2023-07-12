@@ -18,6 +18,7 @@
         "imageUrl":
           "/samples/track1.jpg",
         "description": "1번 트랙",
+        "duration": 254.537143,
         "highlightTime": 108,
         "audioSrc": "/samples/터널-코너레코즈.mp3",
         "lyrics": ["가고 싶은 곳이 생긴 열일곱 소녀는", "들뜬 마음으로 떠날 채비를 하고", "부풀어 오른 가슴을 간신히 부여잡고", "낯선 곳을 향해 한 발을 내딛었어", "가도 가도 끝이 보이지 않아", "벌써 몇 번이나 주저앉으려 했지", "희미하게 보이는 저기 저곳에", "여전히 지금도 가고 있는 걸", "앞으로 나아가 지쳐 힘들어도 다시 일어나", "끝이 없는 터널 속에 버려진 나", "보이지 않는 닿을 수 없는 꿈 속의 그 곳", "쉬지 않는 발걸음에 지쳐가며", "걸어보자 걸어보자 걸어보자", "앞으로 나아가 지쳐 힘들어도 다시 일어나", "끝이 없는 터널 속에 버려진 나", "꺼지지 않는 불씨 속에 바람이 일어", "보이지 않는 버릴 수 없는 가고 싶은 그 곳", "오늘도 난 캄캄한 밤 외로운 길을", "걸어간다 걸어간다 걸어간다"],
@@ -41,6 +42,7 @@
         "imageUrl":
           "/samples/track2.jpg",
         "description": "2번 트랙",
+        "duration" : 223.007325,
         "highlightTime": 135,
         "audioSrc": "/samples/봄-earbut.mp3",
         "lyrics": ["가사 업로드 예정"],
@@ -56,6 +58,7 @@
         "imageUrl":
           "/samples/track3.jpg",
         "description": "3번 트랙",
+        "duration": 203.568,
         "highlightTime": 60,
         "audioSrc": "/samples/Be As You Are (JordanXL Remix)-Mike Posner.mp3",
         "lyrics":   [
