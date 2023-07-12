@@ -12,15 +12,17 @@ const loopDescriptions = [
 
 const SongPlayerLayout = styled.section`
   max-width: 500px;
-  width: 40%;
-  height: 120px;
+  width: 60%;
+  height: 150px;
   line-height: initial;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   align-items: center;
+  justify-items: center;
 
   @media (max-width: 768px) {
-    width: 75%;
+    width: 85%;
+    height: 120px;
   }
 
   .playingSongHeadingBox {
@@ -28,15 +30,23 @@ const SongPlayerLayout = styled.section`
     text-align: center;
   }
   .buttonsBox {
+    width: 80%;
     display: flex;
     justify-content: space-between;
   }
   .progressBox {
-    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     .barBox {
+      overflow: hidden;
       display: flex;
-      height: 10px;
+      width: 100%;
       .progressBarInput {
+        box-sizing: content-box;
+        border-top: 15px transparent solid;
+        border-bottom: 15px transparent solid;
         -webkit-appearance: none;
         appearance: none;
         margin: 0 0;
@@ -44,7 +54,6 @@ const SongPlayerLayout = styled.section`
         height: 10px;
         outline: none;
         overflow: hidden;
-        border-radius: 5px;
       }
       .progressBarInput::-webkit-slider-runnable-track {
         height: 10px;
@@ -63,7 +72,6 @@ const SongPlayerLayout = styled.section`
       .loadingBar {
         width: 100%;
         height: 10px;
-        border-radius: 5px;
         background-color: lightgray;
         height: 10px;
         border: 1px lightgray solid;
@@ -71,16 +79,13 @@ const SongPlayerLayout = styled.section`
           position: relative;
           width: 50%;
           height: 100%;
-          border-radius: 5px;
           background-color: white;
           animation: ${moveFromLeftToRight} 0.8s ease-in-out infinite;
         }
       }
     }
-
-    .playingSongTimeBox {
-      display: flex;
-      justify-content: space-between;
+    .songTime {
+      padding: 0 10px;
     }
   }
 `;
@@ -182,6 +187,7 @@ const SongPlayer = ({
         </Button>
       </div>
       <div className="progressBox">
+        <div className="songTime">{timeFormatter.getString(currentTime)}</div>
         <div className="barBox">
           {isLoading ? (
             <div className="loadingBar">
@@ -199,9 +205,8 @@ const SongPlayer = ({
             />
           )}
         </div>
-        <div className="playingSongTimeBox">
-          <div>{timeFormatter.getString(currentTime)}</div>
-          <div>{timeFormatter.getString(playingSong?.duration || 0)}</div>
+        <div className="songTime">
+          {timeFormatter.getString(playingSong?.duration || 0)}
         </div>
       </div>
     </SongPlayerLayout>

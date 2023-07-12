@@ -33,8 +33,10 @@ const Button = styled.button`
   color: gray;
   font-style: italic;
   text-decoration: underline;
-  &:hover {
-    color: darkgray;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: darkgray;
+    }
   }
   ${(props) =>
     props.$isSelected &&
