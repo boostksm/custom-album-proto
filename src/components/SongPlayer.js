@@ -22,7 +22,7 @@ const SongPlayerLayout = styled.section`
 
   @media (max-width: 768px) {
     width: 85%;
-    /* height: 120px; */
+    height: 120px;
   }
 
   .playingSongHeadingBox {
