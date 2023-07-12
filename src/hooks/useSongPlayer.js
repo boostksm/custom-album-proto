@@ -37,15 +37,13 @@ export default function useSongPlayer({
     })();
   }, [playingSong]);
 
-  const moveToHighlight = useCallback(() => {
-    fadeIn();
-    audioRef.current.currentTime = playingSong.highlightTime;
-    setCurrentTime(playingSong.highlightTime);
-  }, [playingSong]);
-
   useEffect(() => {
     audioRef.current.src = curObjectUrl;
-    if (isFromHighlight) moveToHighlight();
+    if (isFromHighlight) {
+      moveToHighlight();
+    } else {
+      moveTo(0);
+    }
     if (isPlaying) {
       audioRef.current.play().catch(console.log);
     }
@@ -59,6 +57,16 @@ export default function useSongPlayer({
     if (isPlaying) audioRef.current.play().catch(console.log);
     else audioRef.current.pause();
   }, [isPlaying]);
+
+  const moveTo = useCallback((time) => {
+    audioRef.current.currentTime = time;
+    setCurrentTime(time);
+  }, []);
+
+  const moveToHighlight = useCallback(() => {
+    fadeIn();
+    moveTo(playingSong.highlightTime);
+  }, [playingSong]);
 
   const playPrevSong = useCallback(() => {
     if (!playingSong) return;
