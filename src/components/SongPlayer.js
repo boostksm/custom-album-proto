@@ -180,7 +180,6 @@ const SongPlayer = ({
           onClick={setLoop}
           $isToggled={loopOptionIdx !== 0}
           aria-label="반복 재생"
-          aria-description={loopDescriptions[loopOptionIdx]}
         >
           <PlayerIcons.Loop />
           {loopOptionIdx === 2 && <span>1</span>}
