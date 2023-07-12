@@ -11,7 +11,6 @@ export default function useSongPlayer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isRandom, setIsRandom] = useState(false);
   const [loopOptionIdx, setLoopOptionIdx] = useState(0);
-  const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef(null);
   const audioSrcManager = useRef(new AudioFetchingManager(10));
@@ -40,8 +39,8 @@ export default function useSongPlayer({
   }, [playingSong]);
 
   useEffect(() => {
-    console.log(curObjectUrl);
     audioRef.current.src = curObjectUrl;
+    if (isFromHighlight) moveToHighlight();
     if (isPlaying) {
       audioRef.current.play().catch(console.log);
     }
@@ -49,7 +48,7 @@ export default function useSongPlayer({
 
   useEffect(() => {
     if (isFromHighlight) moveToHighlight();
-  }, [isFromHighlight, duration]);
+  }, [isFromHighlight]);
 
   useEffect(() => {
     if (isPlaying) audioRef.current.play().catch(console.log);
@@ -101,9 +100,6 @@ export default function useSongPlayer({
     }, 100);
   }, []);
 
-  const updateDuration = useCallback((e) => {
-    setDuration(e.currentTarget.duration);
-  }, []);
   const updateCurrentTime = useCallback((e) => {
     const { currentTime } = e.currentTarget;
     setCurrentTime(currentTime);
@@ -111,21 +107,20 @@ export default function useSongPlayer({
 
   const changeCurrentTime = useCallback(
     (e) => {
+      if (!playingSong) return;
       const { value } = e.currentTarget;
-      const nextTime = (value / 100) * duration;
+      const nextTime = (value / 100) * playingSong.duration;
       audioRef.current.currentTime = nextTime;
       setCurrentTime(nextTime);
     },
-    [duration]
+    [playingSong]
   );
   return {
     audioRef,
     playPrevSong,
     playNextSong,
     currentTime,
-    duration,
     changeCurrentTime,
-    updateDuration,
     updateCurrentTime,
     isPlaying,
     isRandom,

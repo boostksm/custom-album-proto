@@ -117,9 +117,7 @@ const SongPlayer = ({
     playPrevSong,
     playNextSong,
     currentTime,
-    duration,
     changeCurrentTime,
-    updateDuration,
     updateCurrentTime,
     isPlaying,
     isRandom,
@@ -137,7 +135,6 @@ const SongPlayer = ({
         ref={audioRef}
         id="player"
         loop={loopOptionIdx === 2}
-        onLoadedMetadata={updateDuration}
         onTimeUpdate={updateCurrentTime}
       ></audio>
       <div className="playingSongHeadingBox">
@@ -194,7 +191,9 @@ const SongPlayer = ({
             <input
               className="progressBarInput"
               type="range"
-              value={(currentTime / duration) * 100 || 0}
+              value={
+                playingSong ? (currentTime / playingSong.duration) * 100 : 0
+              }
               onInput={changeCurrentTime}
               aria-label="재생바"
             />
@@ -202,7 +201,7 @@ const SongPlayer = ({
         </div>
         <div className="playingSongTimeBox">
           <div>{timeFormatter.getString(currentTime)}</div>
-          <div>{timeFormatter.getString(duration)}</div>
+          <div>{timeFormatter.getString(playingSong?.duration || 0)}</div>
         </div>
       </div>
     </SongPlayerLayout>
