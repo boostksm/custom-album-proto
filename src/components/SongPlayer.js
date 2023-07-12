@@ -2,6 +2,7 @@ import timeFormatter from "../utils/timeFormatter";
 import { PlayerIcons } from "../utils/icons";
 import { css, styled } from "styled-components";
 import useSongPlayer from "../hooks/useSongPlayer";
+import { moveFromLeftToRight } from "../styles/keyframes";
 
 const loopDescriptions = [
   "반복 재생 꺼짐",
@@ -30,30 +31,53 @@ const SongPlayerLayout = styled.section`
     display: flex;
     justify-content: space-between;
   }
-  .progressBarBox {
-    .progressBarInput {
-      -webkit-appearance: none;
-      appearance: none;
-      margin: 0 0;
-      width: 100%;
-      outline: none;
-      overflow: hidden;
-      border-radius: 5px;
-    }
-    .progressBarInput::-webkit-slider-runnable-track {
+  .progressBox {
+    overflow: hidden;
+    .barBox {
+      display: flex;
       height: 10px;
-      background: lightgray;
+      .progressBarInput {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0 0;
+        width: 100%;
+        height: 10px;
+        outline: none;
+        overflow: hidden;
+        border-radius: 5px;
+      }
+      .progressBarInput::-webkit-slider-runnable-track {
+        height: 10px;
+        background-color: lightgray;
+      }
+      .progressBarInput::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: white;
+        border: 2px solid darkgray;
+        box-shadow: -407px 0 0 400px darkgray;
+      }
+      .loadingBar {
+        width: 100%;
+        height: 10px;
+        border-radius: 5px;
+        background-color: lightgray;
+        height: 10px;
+        border: 1px lightgray solid;
+        .loadingBarMoving {
+          position: relative;
+          width: 50%;
+          height: 100%;
+          border-radius: 5px;
+          background-color: white;
+          animation: ${moveFromLeftToRight} 0.8s ease-in-out infinite;
+        }
+      }
     }
-    .progressBarInput::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      height: 10px;
-      width: 10px;
-      border-radius: 50%;
-      background-color: white;
-      border: 2px solid darkgray;
-      box-shadow: -407px 0 0 400px darkgray;
-    }
+
     .playingSongTimeBox {
       display: flex;
       justify-content: space-between;
@@ -93,9 +117,7 @@ const SongPlayer = ({
     playPrevSong,
     playNextSong,
     currentTime,
-    duration,
     changeCurrentTime,
-    updateDuration,
     updateCurrentTime,
     isPlaying,
     isRandom,
@@ -103,6 +125,7 @@ const SongPlayer = ({
     toggleIsPlaying,
     toggleIsRandom,
     setLoop,
+    isLoading,
   } = useSongPlayer({ albumData, setPlayingId, playingSong, isFromHighlight });
 
   return (
@@ -112,9 +135,6 @@ const SongPlayer = ({
         ref={audioRef}
         id="player"
         loop={loopOptionIdx === 2}
-        src={playingSong?.audioSrc}
-        preload="auto"
-        onLoadedMetadata={updateDuration}
         onTimeUpdate={updateCurrentTime}
       ></audio>
       <div className="playingSongHeadingBox">
@@ -161,17 +181,27 @@ const SongPlayer = ({
           {loopOptionIdx === 2 && <span>1</span>}
         </Button>
       </div>
-      <div className="progressBarBox">
-        <input
-          className="progressBarInput"
-          type="range"
-          value={(currentTime / duration) * 100 || 0}
-          onInput={changeCurrentTime}
-          aria-label="재생바"
-        />
+      <div className="progressBox">
+        <div className="barBox">
+          {isLoading ? (
+            <div className="loadingBar">
+              <div className="loadingBarMoving"></div>
+            </div>
+          ) : (
+            <input
+              className="progressBarInput"
+              type="range"
+              value={
+                playingSong ? (currentTime / playingSong.duration) * 100 : 0
+              }
+              onInput={changeCurrentTime}
+              aria-label="재생바"
+            />
+          )}
+        </div>
         <div className="playingSongTimeBox">
           <div>{timeFormatter.getString(currentTime)}</div>
-          <div>{timeFormatter.getString(duration)}</div>
+          <div>{timeFormatter.getString(playingSong?.duration || 0)}</div>
         </div>
       </div>
     </SongPlayerLayout>

@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import getRandomNumber from "../utils/getRandomNumber";
+import AudioFetchingManager from "../utils/AudioFetchingManager";
 
 export default function useSongPlayer({
   playingSong,
@@ -10,9 +11,62 @@ export default function useSongPlayer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isRandom, setIsRandom] = useState(false);
   const [loopOptionIdx, setLoopOptionIdx] = useState(0);
-  const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef(null);
+  const audioSrcManager = useRef(new AudioFetchingManager(10));
+  const [curObjectUrl, setCurObjectUrl] = useState(null);
+  const isLoading = useMemo(() => curObjectUrl === null, [curObjectUrl]);
+
+  useEffect(() => {
+    if (!playingSong) return;
+    (async () => {
+      try {
+        let objectUrl = audioSrcManager.current.getObjectUrl(
+          playingSong.audioSrc
+        );
+        if (!objectUrl) {
+          setCurObjectUrl(null);
+          objectUrl = await audioSrcManager.current.getNewObjectUrl(
+            playingSong.audioSrc
+          );
+        }
+        setCurObjectUrl(objectUrl);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [playingSong]);
+
+  useEffect(() => {
+    audioRef.current.src = curObjectUrl;
+    if (isFromHighlight) {
+      moveToHighlight();
+    } else {
+      moveTo(0);
+    }
+    if (isPlaying) {
+      audioRef.current.play().catch(console.log);
+    }
+  }, [curObjectUrl]);
+
+  useEffect(() => {
+    if (isFromHighlight) moveToHighlight();
+  }, [isFromHighlight]);
+
+  useEffect(() => {
+    if (isPlaying) audioRef.current.play().catch(console.log);
+    else audioRef.current.pause();
+  }, [isPlaying]);
+
+  const moveTo = useCallback((time) => {
+    audioRef.current.currentTime = time;
+    setCurrentTime(time);
+  }, []);
+
+  const moveToHighlight = useCallback(() => {
+    fadeIn();
+    moveTo(playingSong.highlightTime);
+  }, [playingSong]);
 
   const playPrevSong = useCallback(() => {
     if (!playingSong) return;
@@ -45,22 +99,6 @@ export default function useSongPlayer({
     setIsPlaying((prev) => !prev);
   }, []);
 
-  useEffect(() => {
-    if (!playingSong || !audioRef.current) return;
-    async function playAudio() {
-      try {
-        await audioRef.current.play();
-      } catch (err) {
-        console.log(err);
-        alert(err);
-        // audioRef.current.src = "/samples/Be As You Are (JordanXL Remix)-Mike Posner.mp3";
-        // audioRef.current.play();
-      }
-    }
-    if (isPlaying) playAudio();
-    else audioRef.current.pause();
-  }, [isPlaying, playingSong]);
-
   const fadeIn = useCallback(() => {
     audioRef.current.volume = 0;
     const intervalId = setInterval(() => {
@@ -75,17 +113,6 @@ export default function useSongPlayer({
     }, 100);
   }, []);
 
-  useEffect(() => {
-    if (playingSong && isFromHighlight) {
-      if (isPlaying) fadeIn();
-      audioRef.current.currentTime = playingSong.highlightTime;
-      setCurrentTime(playingSong.highlightTime);
-    }
-  }, [isFromHighlight, playingSong]);
-
-  const updateDuration = useCallback((e) => {
-    setDuration(e.currentTarget.duration);
-  }, []);
   const updateCurrentTime = useCallback((e) => {
     const { currentTime } = e.currentTarget;
     setCurrentTime(currentTime);
@@ -93,21 +120,20 @@ export default function useSongPlayer({
 
   const changeCurrentTime = useCallback(
     (e) => {
+      if (!playingSong) return;
       const { value } = e.currentTarget;
-      const nextTime = (value / 100) * duration;
+      const nextTime = (value / 100) * playingSong.duration;
       audioRef.current.currentTime = nextTime;
       setCurrentTime(nextTime);
     },
-    [duration]
+    [playingSong]
   );
   return {
     audioRef,
     playPrevSong,
     playNextSong,
     currentTime,
-    duration,
     changeCurrentTime,
-    updateDuration,
     updateCurrentTime,
     isPlaying,
     isRandom,
@@ -115,5 +141,6 @@ export default function useSongPlayer({
     toggleIsPlaying,
     toggleIsRandom,
     setLoop,
+    isLoading,
   };
 }
