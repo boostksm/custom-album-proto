@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import getRandomNumber from "../utils/getRandomNumber";
+import AudioFetchingManager from "../utils/AudioFetchingManager";
 
 export default function useSongPlayer({
   playingSong,
@@ -13,6 +14,46 @@ export default function useSongPlayer({
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef(null);
+  const audioSrcManager = useRef(new AudioFetchingManager(10));
+  const [curObjectUrl, setCurObjectUrl] = useState(null);
+
+  useEffect(() => {
+    if (!playingSong) return;
+    (async () => {
+      try {
+        setCurObjectUrl(null);
+        const objectUrl = await audioSrcManager.current.getObjectUrl(
+          playingSong.audioSrc
+        );
+        setCurObjectUrl(objectUrl);
+      } catch (err) {
+        console.log(playingSong, err);
+      }
+    })();
+  }, [playingSong]);
+
+  const moveToHighlight = useCallback(() => {
+    fadeIn();
+    audioRef.current.currentTime = playingSong.highlightTime;
+    setCurrentTime(playingSong.highlightTime);
+  }, [playingSong]);
+
+  useEffect(() => {
+    console.log(curObjectUrl);
+    audioRef.current.src = curObjectUrl;
+    if (isPlaying) {
+      audioRef.current.play().catch(console.log);
+    }
+  }, [curObjectUrl]);
+
+  useEffect(() => {
+    if (isFromHighlight) moveToHighlight();
+  }, [isFromHighlight, duration]);
+
+  useEffect(() => {
+    if (isPlaying) audioRef.current.play().catch(console.log);
+    else audioRef.current.pause();
+  }, [isPlaying]);
 
   const playPrevSong = useCallback(() => {
     if (!playingSong) return;
@@ -45,22 +86,6 @@ export default function useSongPlayer({
     setIsPlaying((prev) => !prev);
   }, []);
 
-  useEffect(() => {
-    if (!playingSong || !audioRef.current) return;
-    async function playAudio() {
-      try {
-        await audioRef.current.play();
-      } catch (err) {
-        console.log(err);
-        alert(err);
-        // audioRef.current.src = "/samples/Be As You Are (JordanXL Remix)-Mike Posner.mp3";
-        // audioRef.current.play();
-      }
-    }
-    if (isPlaying) playAudio();
-    else audioRef.current.pause();
-  }, [isPlaying, playingSong]);
-
   const fadeIn = useCallback(() => {
     audioRef.current.volume = 0;
     const intervalId = setInterval(() => {
@@ -74,14 +99,6 @@ export default function useSongPlayer({
       );
     }, 100);
   }, []);
-
-  useEffect(() => {
-    if (playingSong && isFromHighlight) {
-      if (isPlaying) fadeIn();
-      audioRef.current.currentTime = playingSong.highlightTime;
-      setCurrentTime(playingSong.highlightTime);
-    }
-  }, [isFromHighlight, playingSong]);
 
   const updateDuration = useCallback((e) => {
     setDuration(e.currentTarget.duration);
