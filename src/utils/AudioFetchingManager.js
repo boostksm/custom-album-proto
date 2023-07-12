@@ -21,17 +21,14 @@ export default class AudioFetchingManager {
       responseType: "blob",
       signal: this.abortController.signal,
     });
-    return URL.createObjectURL(blob);
-  }
-
-  async getObjectUrl(src) {
-    this.abortController?.abort();
-    if (this.objectUrls.has(src)) {
-      return this.objectUrls.get(src);
-    }
-    const objectUrl = await this.getNewObjectUrl(src);
+    const objectUrl = URL.createObjectURL(blob);
     this.objectUrls.set(src, objectUrl);
     this.fifo();
     return objectUrl;
+  }
+
+  getObjectUrl(src) {
+    this.abortController?.abort();
+    return this.objectUrls.get(src);
   }
 }

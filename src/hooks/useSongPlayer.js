@@ -21,13 +21,18 @@ export default function useSongPlayer({
     if (!playingSong) return;
     (async () => {
       try {
-        setCurObjectUrl(null);
-        const objectUrl = await audioSrcManager.current.getObjectUrl(
+        let objectUrl = audioSrcManager.current.getObjectUrl(
           playingSong.audioSrc
         );
+        if (!objectUrl) {
+          setCurObjectUrl(null);
+          objectUrl = await audioSrcManager.current.getNewObjectUrl(
+            playingSong.audioSrc
+          );
+        }
         setCurObjectUrl(objectUrl);
       } catch (err) {
-        console.log(playingSong, err);
+        console.log(err);
       }
     })();
   }, [playingSong]);
